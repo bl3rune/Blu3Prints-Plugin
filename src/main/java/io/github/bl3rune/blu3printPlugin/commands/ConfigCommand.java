@@ -74,6 +74,11 @@ public class ConfigCommand implements CommandExecutor {
                 case ALLOW_MATERIAL:
                     ppbc = modifyMaterialIgnoreList(ppbc, args, config, player);
                     break;
+                case SCALE_X:
+                case SCALE_Y:
+                case SCALE_Z:
+                case SCALE_XYZ:
+                    ppbc = setScale(ppbc, args, config, player);
                 default:
                     break;
             }
@@ -203,6 +208,49 @@ public class ConfigCommand implements CommandExecutor {
             ignoredMaterials.removeIf(m -> m.equalsIgnoreCase(material.name()));
         }
         ppbc.setIgnoredMaterials(ignoredMaterials);
+        return ppbc;
+    }
+
+    private PlayerBlu3printConfig setScale(PlayerBlu3printConfig ppbc, String[] args, Config config, Player player) {
+        if (args.length < 2) {
+            player.sendMessage("Usage: /blu3print.config SCALE_X [scale]");
+            return ppbc;
+        }
+
+        if (config == Config.SCALE_XYZ) {
+            if (args.length < 4) {
+                player.sendMessage("Usage: /blu3print.config SCALE_XYZ [scale X] [scale Y] [scale Z]");
+                return ppbc;
+            }
+            int [] newScales = new int[] {
+                Integer.parseInt(args[1]),
+                Integer.parseInt(args[2]),
+                Integer.parseInt(args[3])
+            };
+
+            ppbc.setXyzScale(newScales);
+            if (GlobalConfig.isVerboseLogging()) {
+                player.sendMessage(ChatColor.GREEN + "Scale is now " + newScales[0] + ", " + newScales[1] + ", " + newScales[2]);
+            }
+            return ppbc;
+        }
+
+        int [] xyz = ppbc.getXyzScale();
+        int scale = Integer.parseInt(args[1]);
+        switch (config) {
+            case SCALE_X:
+                xyz[0] = scale;
+                break;
+            case SCALE_Y:
+                xyz[1] = scale;
+            default:
+                xyz[2] = scale;
+                break;
+        }
+        ppbc.setXyzScale(xyz);
+        if (GlobalConfig.isVerboseLogging()) {
+            player.sendMessage(ChatColor.GREEN + "Scale is now " + xyz[0] + ", " + xyz[1] + ", " + xyz[2]);
+        }
         return ppbc;
     }
 

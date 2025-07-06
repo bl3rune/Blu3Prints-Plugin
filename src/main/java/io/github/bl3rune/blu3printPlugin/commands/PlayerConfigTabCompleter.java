@@ -17,6 +17,25 @@ public class PlayerConfigTabCompleter implements TabCompleter {
         if (args.length == 1) {
             return Arrays.asList(Config.values()).stream().filter(c -> c.isPlayerLevelConfig()).map(c -> c.name()).collect(Collectors.toList());
         }
+        if (args.length == 2) {
+            Config config = null;
+            try {
+                String c = args[0];
+                config = Config.valueOf(c.toUpperCase());
+            } finally {
+                if (config == null) {
+                    return null;
+                }
+            }
+            
+            switch (config) {
+                case ALLOW_MATERIAL:
+                case IGNORE_MATERIAL:
+                    return List.of("STONE", "SAND", "GRAVEL", "...");
+                default:
+                    break;
+            }
+        }
         return null;
     }
 

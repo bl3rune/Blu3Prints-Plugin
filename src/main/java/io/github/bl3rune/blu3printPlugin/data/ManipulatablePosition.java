@@ -30,6 +30,7 @@ public class ManipulatablePosition {
     private int innerIndex;
     private Direction[] ordering;
     private boolean usingScaling;
+    private int [] lastXYZScaling = new int [] { 1, 1, 1 };
 
     public ManipulatablePosition(ManipulatablePosition p, int scale) {
         this(p.getZSize(), p.getYSize(), p.getXSize(), p.getOrientation(), p.getRotation(), scale);
@@ -230,6 +231,16 @@ public class ManipulatablePosition {
         return innerLoop != null && !innerLoop.hasNext();
     }
 
+    public int[] next(boolean scaling, int [] xyzScale) {
+        if (usingScaling) {
+            if (xyzScale[0] != lastXYZScaling[0] || xyzScale[1] != lastXYZScaling[1] || xyzScale[2] != lastXYZScaling[2]) {
+                lastXYZScaling = xyzScale;
+                resetLoops(scaling);
+            }
+        }
+        return next(scaling);
+    }
+
     /**
      * Gets the next position in the 3D sequence based on the iterators
      * - outerLoop
@@ -239,6 +250,7 @@ public class ManipulatablePosition {
      * @return the next position in the 3D sequence.
      */
     public int[] next(boolean scaling) {
+
         if (outerLoop == null || usingScaling != scaling) {
             resetLoops(scaling);
         }
@@ -345,9 +357,10 @@ public class ManipulatablePosition {
      */
     private void resetLoops(boolean scaling) {
         usingScaling = scaling;
-        outerLoop = getLoop(ordering[0], (scaling ? scale : 1));
-        middleLoop = getLoop(ordering[1], (scaling ? scale : 1));
-        innerLoop = getLoop(ordering[2], (scaling ? scale : 1));
+        int [] scales = lastXYZScaling;
+        outerLoop = getLoop(ordering[0], (scaling ? (scale * scales[0]) : 1));
+        middleLoop = getLoop(ordering[1], (scaling ? (scale * scales[1]) : 1));
+        innerLoop = getLoop(ordering[2], (scaling ? (scale * scales[2]) : 1));
         outerIndex = outerLoop.next();
         middleIndex = middleLoop.next();
     }

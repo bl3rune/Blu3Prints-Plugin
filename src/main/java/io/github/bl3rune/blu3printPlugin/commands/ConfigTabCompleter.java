@@ -17,6 +17,35 @@ public class ConfigTabCompleter implements TabCompleter {
         if (args.length == 1) {
             return Arrays.asList(Config.values()).stream().map(c -> c.name()).collect(Collectors.toList());
         }
+        if (args.length == 2) {
+            Config config = null;
+            try {
+                String c = args[0];
+                config = Config.valueOf(c.toUpperCase());
+            } finally {
+                if (config == null) {
+                    return null;
+                }
+            }
+            
+            switch (config) {
+                case SCALE_X:
+                case SCALE_Y:
+                case SCALE_Z:
+                case SCALE_XYZ:
+                    return List.of("1","2","3","4","5","6","7","8","9", "...");
+                case ALLOW_MATERIAL:
+                case IGNORE_MATERIAL:
+                    return List.of("STONE", "SAND", "GRAVEL", "...");
+                case HOLOGRAM_VIEW_X:
+                case HOLOGRAM_VIEW_Y:
+                case HOLOGRAM_VIEW_Z:
+                case HOLOGRAM_VIEW_XYZ:
+                    return List.of("0,1,2", "0", "1", "2", "1-2", "...");
+                default:
+                    break;
+            }
+        }
         return null;
     }
 

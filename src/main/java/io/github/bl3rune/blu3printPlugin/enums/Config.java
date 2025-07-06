@@ -5,6 +5,10 @@ public enum Config {
     HOLOGRAM_VIEW_X,
     HOLOGRAM_VIEW_Y,
     HOLOGRAM_VIEW_Z,
+    SCALE_X,
+    SCALE_Y,
+    SCALE_Z,
+    SCALE_XYZ,
     IGNORE_MATERIAL(true),
     ALLOW_MATERIAL(true),
     CLEAR(true);

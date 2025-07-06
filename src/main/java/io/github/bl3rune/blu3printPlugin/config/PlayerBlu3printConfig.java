@@ -8,12 +8,14 @@ public class PlayerBlu3printConfig {
     private String uuid; // Blu3print to apply config to
     private int [] [] hologramViewLayers; // X[], Y[], Z[]
     private List<String> ignoredMaterials; // Materials to ignore
+    private int [] xyzScale;
 
 
     public PlayerBlu3printConfig(String uuid) {
         this.uuid = uuid;
         this.hologramViewLayers = null;
         this.ignoredMaterials = new ArrayList<>();
+        this.xyzScale = new int [] { 1, 1, 1 };
     }
 
     public boolean uuidMatches(String uuid) {
@@ -45,6 +47,14 @@ public class PlayerBlu3printConfig {
 
     public void setIgnoredMaterials(List<String> materials) {
         this.ignoredMaterials = materials;
+    }
+
+    public int[] getXyzScale() {
+        return xyzScale;
+    }
+
+    public void setXyzScale(int[] xyzScale) {
+        this.xyzScale = xyzScale;
     }
 
 }
