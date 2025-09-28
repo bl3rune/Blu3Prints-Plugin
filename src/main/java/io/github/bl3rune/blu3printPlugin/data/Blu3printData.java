@@ -303,7 +303,7 @@ public abstract class Blu3printData {
                     continue;
                 }
                 if (itemStack.getItemMeta() instanceof BlockStateMeta) {
-                    BlockStateMeta bsm = (BlockStateMeta) itemStack;
+                    BlockStateMeta bsm = (BlockStateMeta) itemStack.getItemMeta();
                     if (bsm.getBlockState() instanceof Container) {
                         storageBlocks.put(inventoryIndex, itemStack);
                     } else {
@@ -314,6 +314,9 @@ public abstract class Blu3printData {
                 }
                 inventoryIndex++;
             } catch (Exception e) {
+                logger().warning("ERROR checkPlayerHasBLocksInInventory INV SCAN");
+                logger().warning(e.getMessage());
+                e.printStackTrace();
                 endOfInventory = true;
             }
         }
@@ -360,6 +363,9 @@ public abstract class Blu3printData {
                     storageInventoryBlocks.put(storageInventoryIndex, itemStack);
                     storageInventoryIndex++;
                 } catch (Exception e) {
+                    logger().warning("ERROR checkPlayerHasBLocksInInventory BLOCK INV SCAN POSITION " + k + " BLOCK " + v.getType().name());
+                    logger().warning(e.getMessage());
+                    e.printStackTrace();
                     endOfStorageInventory = true;
                 }
             }
