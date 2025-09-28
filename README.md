@@ -2,7 +2,7 @@
 
 [![Latest Release](https://img.shields.io/github/v/release/bl3rune/Blu3Prints-Plugin)](https://github.com/bl3rune/Blu3Prints-Plugin/releases)
 [![Build Status](https://github.com/bl3rune/Blu3Prints-Plugin/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/bl3rune/Blu3Prints-Plugin/actions)
-![Minimum MC Version](https://img.shields.io/badge/Spigot_Versions-v1.18_--_v1.21.5-orange)
+![Minimum MC Version](https://img.shields.io/badge/Spigot_Versions-v1.18_--_v1.21.8-orange)
 
 ![Banner](https://github.com/bl3rune/Blu3Prints-Plugin/raw/main/images/New-Banner.png "Banner")
 ### **A blueprint tool that allows players to capture/share/manipulate designs within Minecraft** 
