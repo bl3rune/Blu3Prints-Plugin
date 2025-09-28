@@ -1,5 +1,5 @@
 name: Blu3PrintPlugin
-version: '1.7.5'
+version: '1.7.6'
 main: io.github.bl3rune.blu3printPlugin.Blu3PrintPlugin
 api-version: '1.18'
 prefix: Blu3Print
@@ -12,85 +12,85 @@ commands:
     usage: /<command>
     permission: blu3print
     permission-message: You don't have permission to use the Blu3print menu
-    aliases: [ blu3 ]
+    aliases: [ bp ]
   blu3print.duplicate:
     description: Duplicate the Blu3Print currently held (If a blank Blu3Print is in inventory)
     usage: /<command>
     permission: blu3print.duplicate
     permission-message: You don't have permission duplicate this
-    aliases: [ blu3.duplicate ]
+    aliases: [ bp.duplicate ]
   blu3print.rotate:
     description: Rotate the Blu3Print currently held
     usage: /<command> <#optional# rotation> (default next rotation)
     permission: blu3print.rotate
     permission-message: You don't have permission to rotate this
-    aliases: [ blu3.rotate ]
+    aliases: [ bp.rotate ]
   blu3print.turn:
     description: Turn the Blu3Print currently held
     usage: /<command> <turn>
     permission: blu3print.turn
     permission-message: You don't have permission to turn this
-    aliases: [ blu3.turn ]
+    aliases: [ bp.turn ]
   blu3print.face:
     description: Change the direction of the Blu3Print currently held
     usage: /<command> <#optional# direction> (default next face)
     permission: blu3print.face
     permission-message: You don't have permission to change the direction of this
-    aliases: [ blu3.face ]
+    aliases: [ bp.face ]
   blu3print.import:
     description: Import a Blu3Print from a string to the current held Blu3Print
     usage: /<command> <name> <encodedString>
     permission: blu3print.import
     permission-message: You don't have permission to import
-    aliases: [ blu3.import ]
+    aliases: [ bp.import ]
   blu3print.export:
     description: Export the Blu3Print currently held to a string
     usage: /<command>
     permission: blu3print.export
     permission-message: You don't have permission to export
-    aliases: [ blu3.export ]
+    aliases: [ bp.export ]
   blu3print.scale:
     description: Change the scale of the Blu3Print currently held
     usage: /<command> <#optional# scale> (default current * 2)
     permission: blu3print.scale
     permission-message: You don't have permission to change the scale of this
-    aliases: [ blu3.scale ]
+    aliases: [ bp.scale ]
   blu3print.name:
     description: Set the name of the Blu3Print currently held
     usage: /<command> <name>
     permission: blu3print.name
     permission-message: You don't have permission to rename this
-    aliases: [ blu3.name ]
+    aliases: [ bp.name ]
   blu3print.give:
     description: Gives player a blu3print
     usage: /<command> <#optional# player>
     permission: blu3print.give
     permission-message: You don't have permission to give players a blu3print writer
-    aliases: [ blu3.give ]
+    aliases: [ bp.give ]
   blu3print.help:
     description: Get help for Blu3PrintPlugin
     usage: /<command>
     permission: blu3print.help
     permission-message: You don't have permission to get help for Blu3PrintPlugin
-    aliases: [ blu3.help ]
+    aliases: [ bp.help ]
   blu3print.config:
     description: Set per-player-per-blu3print config for Blu3prints
     usage: /<command> <config-type> <value>
     permission: blu3print.config
     permission-message: You don't have permission to set config for each Blu3print
-    aliases: [ blu3.config ]
+    aliases: [ bp.config ]
   blu3print.player-config:
     description: Set player config for Blu3prints
     usage: /<command> <config-type> <value>
     permission: blu3print.player-config
     permission-message: You don't have permission to set player config for Blu3print Plugin
-    aliases: [ blu3.player ]
+    aliases: [ bp.player ]
   blu3print.global-config:
     description: Set global config for Blu3prints
     usage: /<command> <config-type> <value>
     permission: blu3print.global-config
     permission-message: You don't have permission to set global config for Blu3print Plugin
-    aliases: [ blu3.global ]
+    aliases: [ bp.global ]
 permissions:
   blu3print.*:
     default: false
