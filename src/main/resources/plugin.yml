@@ -1,5 +1,5 @@
 name: Blu3PrintPlugin
-version: '1.7.4'
+version: '1.7.5'
 main: io.github.bl3rune.blu3printPlugin.Blu3PrintPlugin
 api-version: '1.18'
 prefix: Blu3Print
